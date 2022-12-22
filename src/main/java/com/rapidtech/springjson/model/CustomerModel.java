@@ -7,12 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
-
+@AllArgsConstructor
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class CustomerModel {
-    private Integer id;
+    private Long id;
     private String fullName;
     private List<AddressModel> address;
     private String gender;
