@@ -6,6 +6,7 @@ import com.rapidtech.springjson.model.SchoolModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -31,7 +32,7 @@ public class CustomerEntity {
     private String gender;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "date_of_birth")
+    @Column(name ="date_of_birth")
     private Date dateOfBirth;
     @Column(name = "place_of_birth")
     private String placeOfBirth;
@@ -45,15 +46,19 @@ public class CustomerEntity {
     @OneToMany(mappedBy = "customer",  cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchoolEntity> schools = new ArrayList<>();
 
-    public CustomerEntity(CustomerModel customer){
-        this.fullName = customer.getFullName();
-        this.dateOfBirth = customer.getDateOfBirth();
-        this.gender = customer.getGender();
-        for (AddressModel address : customer.getAddress()){
-            this.address.add(new AddressEntity(address));
-        }
-        for (SchoolModel school : customer.getSchools()){
-            this.schools.add(new SchoolEntity(school));
-        }
-    }
+//    public CustomerEntity(CustomerModel customer){
+//        this.fullName = customer.getFullName();
+//        this.dateOfBirth = customer.getDateOfBirth();
+//        this.gender = customer.getGender();
+//        for (AddressModel address : customer.getAddress()){
+//            this.address.add(new AddressEntity(address));
+//        }
+//        for (SchoolModel school : customer.getSchools()){
+//            this.schools.add(new SchoolEntity(school));
+//        }
+//    }
+    public CustomerEntity(CustomerModel model) {
+    BeanUtils.copyProperties(model,this);
+}
+
 }

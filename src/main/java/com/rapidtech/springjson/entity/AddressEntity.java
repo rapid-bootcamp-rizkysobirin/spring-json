@@ -21,7 +21,7 @@ public class AddressEntity {
                     pkColumnValue = "address_id", initialValue = 0, allocationSize = 0)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "address_id_generator")
     private Long id;
-    @Column(name = "name", length = 100)
+    @Column(name ="name", length = 100)
     private String name;
     @Column(name = "street", length = 100)
     private String address;
@@ -29,7 +29,7 @@ public class AddressEntity {
     private String village;
     @Column(name = "district", length = 100)
     private String district;
-    @Column(name = "city", length = 100)
+    @Column(name = "city",  length = 100)
     private String city;
     @Column(name = "province", length = 100)
     private String province;

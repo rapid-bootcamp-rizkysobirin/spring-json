@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class AddressModel {
     private Long id;
     private String name;
-    private String address;
+    private String  address;
     private String village;
     private String district;
     private String city;
