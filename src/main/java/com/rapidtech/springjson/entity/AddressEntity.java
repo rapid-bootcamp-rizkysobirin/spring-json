@@ -21,25 +21,26 @@ public class AddressEntity {
                     pkColumnValue = "address_id", initialValue = 0, allocationSize = 0)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "address_id_generator")
     private Long id;
-    @Column(name ="name", length = 100)
+    @Column(name ="name", length = 100,nullable = false)
     private String name;
-    @Column(name = "street", length = 100)
-    private String address;
-    @Column(name = "village", length = 100)
+//    @Column(name = "street", length = 100)
+//    private String address;
+    @Column(name = "village", length = 100,nullable = false)
     private String village;
-    @Column(name = "district", length = 100)
+    @Column(name = "district", length = 100,nullable = false)
     private String district;
-    @Column(name = "city",  length = 100)
+    @Column(name = "city",  length = 100,nullable = false)
     private String city;
-    @Column(name = "province", length = 100)
+    @Column(name = "province", length = 100,nullable = false)
     private String province;
 
-    @Column(name = "customer_id")
+    @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
     // address --> customer
+    
     @ManyToOne
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", updatable = false,insertable = false)
     private CustomerEntity customer;
 
 

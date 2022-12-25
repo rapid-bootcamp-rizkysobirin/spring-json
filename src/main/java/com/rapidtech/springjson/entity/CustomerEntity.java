@@ -39,11 +39,11 @@ public class CustomerEntity {
 
 
     //customer --> address
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<AddressEntity> address;
 
     //customer-->school
-    @OneToMany(mappedBy = "customer",  cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customer",  cascade = CascadeType.ALL)
     private List<SchoolEntity> schools = new ArrayList<>();
 
 //    public CustomerEntity(CustomerModel customer){
@@ -58,7 +58,29 @@ public class CustomerEntity {
 //        }
 //    }
     public CustomerEntity(CustomerModel model) {
-    BeanUtils.copyProperties(model,this);
-}
+
+        BeanUtils.copyProperties(model,this);
+    }
+//     public void addAddressList(List<AddressModel> models){
+//        for (AddressModel model: models){
+//            this.addAddress(new AddressEntity(model));
+//        }
+//     }
+//
+//     public void addAddress(AddressEntity address){
+//        this.address.add(address);
+//        address.setCustomer(this);
+//     }
+//
+//     public void addSchoolList(List<SchoolModel> models){
+//         for (SchoolModel model: models) {
+//             this.addSchool(new SchoolEntity(model));
+//         }
+//     }
+//
+//     public void addSchool(SchoolEntity school){
+//        this.schools.add(school);
+//        school.setCustomer(this);
+//     }
 
 }

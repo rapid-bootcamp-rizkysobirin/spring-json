@@ -28,6 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Optional<CustomerModel> saveCustomer(CustomerModel requestModel) {
         if(requestModel == null){
+            log.error("salah");
             return Optional.empty();
         }
 //        return Optional.empty();
@@ -35,6 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 //                return Optional.empty();
 //            }
         CustomerEntity entity = new CustomerEntity(requestModel);
+
         try {
             this.repo.save(entity);
             return Optional.of(new CustomerModel(entity));
@@ -74,6 +76,26 @@ public class CustomerServiceImpl implements CustomerService {
         response.setFailedSave(countFailed);
         return response;
 
+    }
+
+    @Override
+    public List<CustomerModel> getAll() {
+        return null;
+    }
+
+    @Override
+    public Optional<CustomerModel> getById(Long Id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<CustomerModel> update(Long Id, CustomerModel model) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<CustomerModel> delete(Long id) {
+        return Optional.empty();
     }
 
 }

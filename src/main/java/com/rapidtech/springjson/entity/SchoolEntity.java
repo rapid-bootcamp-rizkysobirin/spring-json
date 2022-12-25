@@ -27,12 +27,12 @@ public class SchoolEntity {
     @Column(name = "level", length= 10, nullable = false)
     private String level;
 
-    @Column(name = "customer_id")
+    @Column(name = "customer_id",insertable = false, updatable = false)
     private Long customerId;
 
     // school --> customer
     @ManyToOne
-    @JoinColumn(name = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private CustomerEntity customer;
 
     public SchoolEntity(SchoolModel model) {
